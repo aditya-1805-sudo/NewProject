@@ -4,14 +4,13 @@ import org.example.Models.Parrot;
 import org.example.Models.Person;
 import org.example.Models.Rabbit;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.*;
 
 @Configuration
 @ComponentScan(basePackages = "org.example")
+@EnableAspectJAutoProxy
 public class ProjectConfig {
+
 
     @Primary
     @Bean

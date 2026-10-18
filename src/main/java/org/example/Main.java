@@ -9,10 +9,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.util.ArrayList;
 import java.util.function.Supplier;
+import java.util.logging.Logger;
 
 @SpringBootApplication
 public class Main {
-
+    private static Logger logger=Logger.getLogger(Main.class.getName());
     public static void main(String []args) {
 
         var context =new AnnotationConfigApplicationContext(ProjectConfig.class);
@@ -50,5 +51,14 @@ public class Main {
         comments.setText("Great");
         var commentsService=context.getBean(CommentService.class);
         commentsService.publish(comments);
+        String value=commentsService.publishComment(comments);
+        commentsService.editComment(comments);
+        commentsService.deleteComment(comments);
+        var plant1=context.getBean(Plant.class);
+        var plant2=context.getBean(Plant.class);
+        if(plant1!=plant2){
+            System.out.println("Different Instances are being created");
+        }
+        logger.info(value);
     }
 }
