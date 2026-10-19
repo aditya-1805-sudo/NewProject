@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.example.Models.Comments;
 import org.example.Services.CommentService;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
 @Setter
 @Component
 @Aspect
+@Order(2)
 public class LoggingAspect {
     private Logger logger= Logger.getLogger(LoggingAspect.class.getName());
     @Around("@annotation(ToLog)")
@@ -30,6 +32,6 @@ public class LoggingAspect {
         Object [] newArgs={comments};
         Object returnByMethod=joinPoint.proceed(newArgs);
         logger.info(methodeName+" method has executed");
-        return returnByMethod;
+        return "returnByLogger->"+returnByMethod;
     }
 }

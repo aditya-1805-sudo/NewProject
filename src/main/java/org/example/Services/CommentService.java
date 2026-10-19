@@ -41,11 +41,11 @@ public class CommentService {
         logger.info("Publishing Comment:"+comments.getText()+" by:"+comments.getAuthor());
         return "SUCCESS";
     }
-    @ToLog
+
     public void deleteComment(Comments comments){
         logger.info("Deleting Comment:"+comments.getText()+" by:"+comments.getAuthor());
     }
-    @ToLog
+
     public void editComment(Comments comments){
         logger.info("Editing Comment:"+comments.getText()+" by:"+comments.getAuthor());
     }
